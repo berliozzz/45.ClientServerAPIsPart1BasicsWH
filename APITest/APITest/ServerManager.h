@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class User;
 
 @interface ServerManager : NSObject
 
@@ -16,5 +17,27 @@
                         count:(NSInteger)count
                      onSuccess:(void(^)(NSArray *friends))success
                     onFailure:(void(^)(NSError *error))failure;
+
+- (void) getUserInfoWithId:(NSInteger)userId
+                 onSuccess:(void(^)(User *user))success
+                 onFailure:(void(^)(NSError *error))failure;
+
+- (void) getFollowersWithId:(NSInteger)userId
+                     offset:(NSInteger)offset
+                      count:(NSInteger)count
+                  onSuccess:(void(^)(NSArray *followers))success
+                  onFailure:(void(^)(NSError *error))failure;
+
+- (void) getSubscriptionsWithId:(NSInteger)userId
+                         offset:(NSInteger)offset
+                          count:(NSInteger)count
+                      onSuccess:(void(^)(NSArray *subscriptions))success
+                      onFailure:(void(^)(NSError *error))failure;
+
+- (void) getWallWithId:(NSInteger)ownerId
+                offset:(NSInteger)offset
+                 count:(NSInteger)count
+             onSuccess:(void(^)(NSArray *subscriptions))success
+             onFailure:(void(^)(NSError *error))failure;
 
 @end

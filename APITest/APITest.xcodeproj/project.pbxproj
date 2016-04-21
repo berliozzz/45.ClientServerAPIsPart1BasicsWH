@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6065B098A8758FDA2313F8AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 879C8573DEA53DD11E9FEF27 /* libPods.a */; };
+		9A17AE5D1CC8F5F50086A652 /* WallImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A17AE5C1CC8F5F50086A652 /* WallImageCell.m */; };
+		9A17AE601CC8FA940086A652 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A17AE5F1CC8FA940086A652 /* Wall.m */; };
 		9A253C4A1CB575F100A07B0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A253C491CB575F100A07B0B /* main.m */; };
 		9A253C4D1CB575F100A07B0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A253C4C1CB575F100A07B0B /* AppDelegate.m */; };
 		9A253C501CB575F100A07B0B /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A253C4F1CB575F100A07B0B /* FriendsViewController.m */; };
@@ -18,8 +20,13 @@
 		9A253C6E1CB575F200A07B0B /* APITestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A253C6D1CB575F200A07B0B /* APITestUITests.m */; };
 		9A3B35091CB914EE004DE5B0 /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3B35081CB914EE004DE5B0 /* ServerManager.m */; };
 		9A3B350C1CB94E2F004DE5B0 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3B350B1CB94E2F004DE5B0 /* User.m */; };
+		9A93462B1CC657A500B0C28E /* MainUserPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93462A1CC657A500B0C28E /* MainUserPhotoCell.m */; };
 		9AD91F6E1CBA80BA0000BDCC /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9AD91F6D1CBA80BA0000BDCC /* preview.gif */; };
 		9AD91F721CBAE3160000BDCC /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD91F711CBAE3160000BDCC /* UserDetailViewController.m */; };
+		9AE895E61CC7C7CF00718A33 /* FollowersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE895E51CC7C7CF00718A33 /* FollowersCell.m */; };
+		9AE895E81CC7CF1D00718A33 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AE895E71CC7CF1D00718A33 /* button.png */; };
+		9AE895EB1CC7D3BF00718A33 /* FollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE895EA1CC7D3BF00718A33 /* FollowersViewController.m */; };
+		9AE895EE1CC7D3D600718A33 /* SubscriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE895ED1CC7D3D600718A33 /* SubscriptionsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +49,10 @@
 /* Begin PBXFileReference section */
 		8108609589DE5E3AC65B8908 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		879C8573DEA53DD11E9FEF27 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A17AE5B1CC8F5F50086A652 /* WallImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallImageCell.h; sourceTree = "<group>"; };
+		9A17AE5C1CC8F5F50086A652 /* WallImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallImageCell.m; sourceTree = "<group>"; };
+		9A17AE5E1CC8FA940086A652 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		9A17AE5F1CC8FA940086A652 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
 		9A253C451CB575F100A07B0B /* APITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A253C491CB575F100A07B0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A253C4B1CB575F100A07B0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,9 +73,18 @@
 		9A3B35081CB914EE004DE5B0 /* ServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerManager.m; sourceTree = "<group>"; };
 		9A3B350A1CB94E2F004DE5B0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		9A3B350B1CB94E2F004DE5B0 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		9A9346291CC657A500B0C28E /* MainUserPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainUserPhotoCell.h; sourceTree = "<group>"; };
+		9A93462A1CC657A500B0C28E /* MainUserPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainUserPhotoCell.m; sourceTree = "<group>"; };
 		9AD91F6D1CBA80BA0000BDCC /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = preview.gif; sourceTree = "<group>"; };
 		9AD91F701CBAE3160000BDCC /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
 		9AD91F711CBAE3160000BDCC /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
+		9AE895E41CC7C7CF00718A33 /* FollowersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowersCell.h; sourceTree = "<group>"; };
+		9AE895E51CC7C7CF00718A33 /* FollowersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowersCell.m; sourceTree = "<group>"; };
+		9AE895E71CC7CF1D00718A33 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		9AE895E91CC7D3BF00718A33 /* FollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowersViewController.h; sourceTree = "<group>"; };
+		9AE895EA1CC7D3BF00718A33 /* FollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowersViewController.m; sourceTree = "<group>"; };
+		9AE895EC1CC7D3D600718A33 /* SubscriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionsViewController.h; sourceTree = "<group>"; };
+		9AE895ED1CC7D3D600718A33 /* SubscriptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionsViewController.m; sourceTree = "<group>"; };
 		B2C06A6AC80D21F63ABEFE10 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,10 +148,8 @@
 		9A253C471CB575F100A07B0B /* APITest */ = {
 			isa = PBXGroup;
 			children = (
-				9A3B350A1CB94E2F004DE5B0 /* User.h */,
-				9A3B350B1CB94E2F004DE5B0 /* User.m */,
-				9A3B35071CB914EE004DE5B0 /* ServerManager.h */,
-				9A3B35081CB914EE004DE5B0 /* ServerManager.m */,
+				9A9346281CC6575500B0C28E /* Cells */,
+				9A9346271CC652CB00B0C28E /* Model */,
 				9AD91F6F1CBAE2BC0000BDCC /* controllers */,
 				9A253C4B1CB575F100A07B0B /* AppDelegate.h */,
 				9A253C4C1CB575F100A07B0B /* AppDelegate.m */,
@@ -171,9 +189,36 @@
 			path = APITestUITests;
 			sourceTree = "<group>";
 		};
+		9A9346271CC652CB00B0C28E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A17AE5E1CC8FA940086A652 /* Wall.h */,
+				9A17AE5F1CC8FA940086A652 /* Wall.m */,
+				9A3B350A1CB94E2F004DE5B0 /* User.h */,
+				9A3B350B1CB94E2F004DE5B0 /* User.m */,
+				9A3B35071CB914EE004DE5B0 /* ServerManager.h */,
+				9A3B35081CB914EE004DE5B0 /* ServerManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9A9346281CC6575500B0C28E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9A17AE5B1CC8F5F50086A652 /* WallImageCell.h */,
+				9A17AE5C1CC8F5F50086A652 /* WallImageCell.m */,
+				9A9346291CC657A500B0C28E /* MainUserPhotoCell.h */,
+				9A93462A1CC657A500B0C28E /* MainUserPhotoCell.m */,
+				9AE895E41CC7C7CF00718A33 /* FollowersCell.h */,
+				9AE895E51CC7C7CF00718A33 /* FollowersCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		9AD91F6C1CBA80BA0000BDCC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9AE895E71CC7CF1D00718A33 /* button.png */,
 				9AD91F6D1CBA80BA0000BDCC /* preview.gif */,
 			);
 			path = Images;
@@ -186,6 +231,10 @@
 				9A253C4F1CB575F100A07B0B /* FriendsViewController.m */,
 				9AD91F701CBAE3160000BDCC /* UserDetailViewController.h */,
 				9AD91F711CBAE3160000BDCC /* UserDetailViewController.m */,
+				9AE895E91CC7D3BF00718A33 /* FollowersViewController.h */,
+				9AE895EA1CC7D3BF00718A33 /* FollowersViewController.m */,
+				9AE895EC1CC7D3D600718A33 /* SubscriptionsViewController.h */,
+				9AE895ED1CC7D3D600718A33 /* SubscriptionsViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -307,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A253C581CB575F200A07B0B /* LaunchScreen.storyboard in Resources */,
+				9AE895E81CC7CF1D00718A33 /* button.png in Resources */,
 				9A253C551CB575F200A07B0B /* Assets.xcassets in Resources */,
 				9AD91F6E1CBA80BA0000BDCC /* preview.gif in Resources */,
 				9A253C531CB575F100A07B0B /* Main.storyboard in Resources */,
@@ -383,11 +433,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A3B350C1CB94E2F004DE5B0 /* User.m in Sources */,
+				9A17AE5D1CC8F5F50086A652 /* WallImageCell.m in Sources */,
+				9A93462B1CC657A500B0C28E /* MainUserPhotoCell.m in Sources */,
 				9A3B35091CB914EE004DE5B0 /* ServerManager.m in Sources */,
+				9AE895EB1CC7D3BF00718A33 /* FollowersViewController.m in Sources */,
+				9A17AE601CC8FA940086A652 /* Wall.m in Sources */,
 				9A253C501CB575F100A07B0B /* FriendsViewController.m in Sources */,
+				9AE895EE1CC7D3D600718A33 /* SubscriptionsViewController.m in Sources */,
 				9A253C4D1CB575F100A07B0B /* AppDelegate.m in Sources */,
 				9AD91F721CBAE3160000BDCC /* UserDetailViewController.m in Sources */,
 				9A253C4A1CB575F100A07B0B /* main.m in Sources */,
+				9AE895E61CC7C7CF00718A33 /* FollowersCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

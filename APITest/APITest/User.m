@@ -17,6 +17,7 @@
     {
         self.firstName = [responseObject objectForKey:@"first_name"];
         self.lastName = [responseObject objectForKey:@"last_name"];
+        self.name = [responseObject objectForKey:@"name"];
         
         NSString *online = [responseObject objectForKey:@"online"];
         
@@ -39,6 +40,26 @@
             self.image200Url = [NSURL URLWithString:url200];
         }
         
+        NSString *userId = [responseObject objectForKey:@"user_id"];
+        
+        if (userId)
+        {
+            self.userId = userId.integerValue;
+        }
+        
+        NSString *shortUserId = [responseObject objectForKey:@"id"];
+        
+        if (shortUserId)
+        {
+            self.shortUserId = shortUserId.integerValue;
+        }
+        
+        NSDictionary *city = [responseObject objectForKey:@"city"];
+        
+        if (city)
+        {
+            self.city = [city objectForKey:@"title"];
+        }
         
         
     }

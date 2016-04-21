@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserDetailViewController : UITableViewController
+@class User;
+
+@interface UserDetailViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+
+@property (strong, nonatomic) User *user;
+
 
 @end

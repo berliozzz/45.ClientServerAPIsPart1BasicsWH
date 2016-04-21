@@ -1,45 +1,43 @@
 //
-//  ViewController.m
+//  FollowersViewController.m
 //  APITest
 //
-//  Created by Nikolay Berlioz on 06.04.16.
+//  Created by Nikolay Berlioz on 20.04.16.
 //  Copyright © 2016 Nikolay Berlioz. All rights reserved.
 //
 
-#import "FriendsViewController.h"
+#import "FollowersViewController.h"
 #import "ServerManager.h"
 #import "User.h"
 #import "UIImageView+AFNetworking.h"
 #import "UserDetailViewController.h"
 
-@interface FriendsViewController ()
+@interface FollowersViewController ()
 
-@property (nonatomic, strong) NSMutableArray *friendsArray;
+@property (strong, nonatomic) NSMutableArray *followersArray;
 @property (assign, nonatomic) BOOL loadingData;
 
 @end
 
-@implementation FriendsViewController
+@implementation FollowersViewController
 
-static NSInteger friensInRequest = 15;
+static NSInteger followersInRequest = 15;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.friendsArray = [NSMutableArray array];
-    self.loadingData = YES;
-    
+    self.followersArray = [NSMutableArray array];
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-     
-    [self.navigationController.navigationBar setTitleTextAttributes:
-                            [NSDictionary dictionaryWithObjectsAndKeys:
-                            [UIColor whiteColor], NSForegroundColorAttributeName,
-                            [UIFont fontWithName:@"Avenir Next" size:23.0], NSFontAttributeName, nil]];
     
-    self.navigationItem.title = @"Friends";
+    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                      [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                                      [UIFont fontWithName:@"Avenir Next" size:23.0], NSFontAttributeName, nil]];
+    self.navigationItem.title = @"Подписчики";
     
-    [self getFriendsFromServer];
+    NSLog(@"%lu", self.userId);
+    
+    [self getFollowers];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,48 +45,39 @@ static NSInteger friensInRequest = 15;
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark -API
+#pragma mark - API
 
-- (void) getFriendsFromServer
+- (void) getFollowers
 {
-    [[ServerManager sharedManager] getFriendsWithOffset:[self.friendsArray count]
-      count:friensInRequest
-  onSuccess:^(NSArray *friends) {
-      
-      [self.friendsArray addObjectsFromArray:friends];
-      
-      //add animation and reload table
-      NSMutableArray *newPaths = [NSMutableArray array];
-      
-      for (int i = (int)[self.friendsArray count] - (int)[friends count]; i < [self.friendsArray count]; i++)
-      {
-          [newPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-      }
-      
-      [self.tableView beginUpdates];
-      [self.tableView insertRowsAtIndexPaths:newPaths withRowAnimation:UITableViewRowAnimationTop];
-      [self.tableView endUpdates];
-      
-      self.loadingData = NO;
-      
-  } onFailure:^(NSError *error) {
-      
-      NSLog(@"error = %@", [error localizedDescription]);
-      
-  }];
+    [[ServerManager sharedManager] getFollowersWithId:self.userId
+                                               offset:[self.followersArray count]
+                                                count:followersInRequest
+    onSuccess:^(NSArray *followers)
+    {
+        [self.followersArray addObjectsFromArray:followers];
+        
+        [self.tableView reloadData];
+        
+        self.loadingData = NO;
+    }
+    onFailure:^(NSError *error)
+    {
+        NSLog(@"error = %@", [error localizedDescription]);
+    }];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.friendsArray count];
+    return [self.followersArray count];
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"Cell";
-
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     if (!cell)
@@ -96,30 +85,16 @@ static NSInteger friensInRequest = 15;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    User *friend = [self.friendsArray objectAtIndex:indexPath.row];
+    User *user = [self.followersArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", friend.firstName, friend.lastName];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
     
-    if (friend.isOnline)
-    {
-        UIView *dot = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(cell.frame),
-                                                               CGRectGetMidY(cell.frame),
-                                                               5, 5)];
-        
-        dot.backgroundColor = [UIColor colorWithRed:(float)0/255 green:(float)105/255 blue:(float)210/255 alpha:0.8f];
-        
-        dot.layer.cornerRadius = dot.frame.size.width/2;
-        dot.layer.masksToBounds = YES;
-        [cell addSubview:dot];
-    }
     
-    NSURLRequest* request = [NSURLRequest requestWithURL:friend.image100Url];
+    NSURLRequest* request = [NSURLRequest requestWithURL:user.image100Url];
     
     __weak UITableViewCell* weakCell = cell;
     
     cell.imageView.image = nil;
-    
-    
     
     [cell.imageView setImageWithURLRequest:request
                           placeholderImage:[UIImage imageNamed:@"preview.gif"]
@@ -133,8 +108,6 @@ static NSInteger friensInRequest = 15;
                                    } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
                                        NSLog(@"ERROOORR FAILURE IMAGE");
                                    }];
-    
-    
     return cell;
 }
 
@@ -142,9 +115,11 @@ static NSInteger friensInRequest = 15;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    User *friend = [self.friendsArray objectAtIndex:indexPath.row];
+    User *friend = [self.followersArray objectAtIndex:indexPath.row];
     
     UserDetailViewController *vc = (UserDetailViewController *)[storyboard  instantiateViewControllerWithIdentifier:@"UserDetailViewController"];
     
@@ -161,14 +136,9 @@ static NSInteger friensInRequest = 15;
         if (!self.loadingData)
         {
             self.loadingData = YES;
-            [self getFriendsFromServer];
+            [self getFollowers];
         }
     }
 }
-
-
-
-
-
 
 @end
